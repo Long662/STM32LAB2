@@ -13,10 +13,14 @@
 
 void Lab2_Init();
 
-void Enable_led7seg(int num); // 0 - 3
-
 // Exercise 1
 LED7SEG_Name LED7SEG;
 void display7SEG(int num);
+
+// Exercise 2
+void Enable_led7seg(int num); // 0 - 3
+
+// Exercise 3
+void update7SEG(int index);
 
 #endif /* SRC_LAB2_LIB_LAB2_EX_H_ */
