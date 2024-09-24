@@ -13,6 +13,8 @@
 
 void Lab2_Init();
 
+void Enable_led7seg(int num); // 0 - 3
+
 // Exercise 1
 LED7SEG_Name LED7SEG;
 void display7SEG(int num);

@@ -227,27 +227,29 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 int counter = 100;
-int change_flag = 0;
+int EN_state = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	counter--;
-	if (counter <= 50) {
-		change_flag = 1;
-	}
+	EN_state = counter / 25;
 	if (counter < 0) {
 		counter = 100;
 		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-		change_flag = 0;
 	}
-	if (!change_flag) {
-		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
-		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-		display7SEG(1);
+	switch (EN_state){
+		case 0: display7SEG(0);
+				HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, RESET);
+				break;
+		case 1: display7SEG(3);
+				HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, SET);
+				break;
+		case 2: display7SEG(2);
+				HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, RESET);
+				break;
+		case 3: display7SEG(1);
+				HAL_GPIO_WritePin(DOT_GPIO_Port, DOT_Pin, SET);
+				break;
 	}
-	else {
-		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
-		display7SEG(2);
-	}
+	Enable_led7seg(EN_state);
 }
 /* USER CODE END 4 */
 
