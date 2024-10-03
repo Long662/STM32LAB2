@@ -227,8 +227,8 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 int counter = 100;
-int counter2 = 50; //for change led7seg
-int index_led = -1;
+int counter2 = 25; //for change led7seg 1Hz = 1000ms --> 250ms per led7seg
+int index_led = 0;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (!counter--) {
@@ -237,7 +237,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	}
 	if (!counter2--){
-		counter2 = 50;
+		counter2 = 25;
 		update7SEG((index_led++) % 4);
 	}
 }
