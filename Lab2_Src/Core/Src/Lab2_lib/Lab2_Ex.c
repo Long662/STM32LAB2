@@ -93,3 +93,14 @@ void update7SEG(int index) {
 }
 // END of function for exercise 3
 //---------------------------------------------------
+
+//---------------------------------------------------
+// BEGIN function for exercise 5
+void updateClockBuffer(int hr_ind, int min_ind){
+	led_buffer[0] = hr_ind / 10;
+	led_buffer[1] = hr_ind % 10;
+	led_buffer[2] = min_ind / 10;
+	led_buffer[3] = min_ind % 10;
+}
+// END of function for exercise 5
+//---------------------------------------------------

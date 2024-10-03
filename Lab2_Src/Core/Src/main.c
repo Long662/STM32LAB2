@@ -95,8 +95,23 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   Lab2_Init();
+  int hour = 15, minute = 8, second = 50;
   while (1)
   {
+	  second++;
+	  if (second >= 60){
+		  second = 0;
+		  minute++;
+	  }
+	  if (minute >= 60){
+		  minute = 0;
+		  hour++;
+	  }
+	  if (hour >= 24){
+		  hour = 0;
+	  }
+	  updateClockBuffer(hour, minute);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
