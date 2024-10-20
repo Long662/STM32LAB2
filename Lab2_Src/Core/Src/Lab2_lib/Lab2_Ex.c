@@ -67,7 +67,7 @@ void Enable_led7seg(int num){
 //---------------------------------------------------
 // BEGIN function for exercise 3
 const int MAX_LED = 4;
-int led_buffer[4] = {1 , 2 , 3 , 4};
+int led_buffer[4];
 
 void update7SEG(int index) {
 	switch (index) {
@@ -97,6 +97,22 @@ void update7SEG(int index) {
 //---------------------------------------------------
 // BEGIN function for exercise 5
 void updateClockBuffer(int hr_ind, int min_ind){
+//	if (hr_ind >= 10) {
+//		led_buffer[0] = hr_ind / 10;
+//		led_buffer[1] = hr_ind % 10;
+//	}
+//	else {
+//		led_buffer[0] = 0;
+//		led_buffer[1] = hr_ind;
+//	}
+//	if (min_ind < 10) {
+//		led_buffer[2] = 0;
+//		led_buffer[3] = min_ind;
+//	}
+//	else {
+//		led_buffer[2] = min_ind / 10;
+//		led_buffer[3] = min_ind % 10;
+//	}
 	led_buffer[0] = hr_ind / 10;
 	led_buffer[1] = hr_ind % 10;
 	led_buffer[2] = min_ind / 10;
