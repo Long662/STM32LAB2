@@ -65,7 +65,7 @@ void setTimer0(int duration){
 	timer0_flag = 0;
 }
 
-void timer_run(){
+void timer0_run(){
 	if (timer0_counter > 0){
 		timer0_counter--;
 		if (timer0_counter == 0)
@@ -110,7 +110,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   Lab2_Init();
-//  int hour = 15, minute = 8, second = 50;
+  int hour = 15, minute = 8, second = 50;
   setTimer0(1000);
   while (1)
   {
@@ -260,9 +260,21 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+int counter = 100;
+int counter2 = 25; //for change led7seg 1Hz = 1000ms --> 250ms per led7seg
+int index_led = 0;
 
-	timer_run();
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	timer0_run();
+	if (!counter--) {
+		counter = 100;
+		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+	}
+	if (!counter2--){
+		counter2 = 25;
+		update7SEG((index_led++) % 4);
+	}
 }
 /* USER CODE END 4 */
 
