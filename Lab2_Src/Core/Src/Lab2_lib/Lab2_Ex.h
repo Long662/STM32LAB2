@@ -26,4 +26,7 @@ void update7SEG(int index);
 //Exercise 5
 void updateClockBuffer(int hr_ind, int min_ind);
 
+//Exercise 9
+void updateLEDMatrix(int index);
+
 #endif /* SRC_LAB2_LIB_LAB2_EX_H_ */
