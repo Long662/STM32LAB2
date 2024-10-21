@@ -131,14 +131,24 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   Lab2_Init();
   int hour = 5, minute = 10, second = 55;
-  int index_led = 0;
+  int index_led = 0, index_ledmt = 0;
   setTimer0(1000);
-//  setTimer1(500);
+  setTimer1(10);
   setTimer2(250);
   while (1)
   {
 	  updateClockBuffer(hour, minute);
-	  if(timer2_flag == 1){
+	  if (timer1_flag == 1) {
+		  updateLEDMatrix(index_ledmt);
+		  if (index_ledmt < 7){
+			  index_ledmt++;
+		  }
+		  else {
+			  index_ledmt = 0;
+		  }
+		  setTimer1(50);
+	  }
+	  if (timer2_flag == 1) {
 		  update7SEG(index_led);
 		  if (index_led < 3){
 			  index_led++;
@@ -148,7 +158,7 @@ int main(void)
 		  }
 		  setTimer2(250);
 	  }
-	  if(timer0_flag == 1){
+	  if (timer0_flag == 1) {
 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		  second++;
