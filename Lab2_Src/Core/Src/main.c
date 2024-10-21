@@ -145,6 +145,7 @@ int main(void)
 		  }
 		  else {
 			  index_ledmt = 0;
+			  shift_left();
 		  }
 		  setTimer1(50);
 	  }

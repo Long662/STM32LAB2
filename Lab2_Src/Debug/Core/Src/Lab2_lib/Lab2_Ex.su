@@ -4,3 +4,4 @@ Lab2_Ex.c:39:6:Enable_led7seg	16	static
 Lab2_Ex.c:72:6:update7SEG	16	static
 Lab2_Ex.c:99:6:updateClockBuffer	16	static
 Lab2_Ex.c:135:6:updateLEDMatrix	48	static
+Lab2_Ex.c:234:6:shift_left	16	static

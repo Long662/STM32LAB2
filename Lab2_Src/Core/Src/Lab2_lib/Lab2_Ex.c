@@ -228,3 +228,18 @@ void updateLEDMatrix(int index){
 }
 // END of function for exercise 9
 //---------------------------------------------------
+
+//---------------------------------------------------
+// BEGIN function for exercise 10
+void shift_left() {
+	for (int ind_matrix = 0; ind_matrix < 8; ind_matrix++) {
+		if (matrix_buffer[ind_matrix] & (1 << 7)) {
+			matrix_buffer[ind_matrix] = (matrix_buffer[ind_matrix] << 1) | 1;
+		}
+		else {
+			matrix_buffer[ind_matrix] = (matrix_buffer[ind_matrix] << 1);
+		}
+	}
+}
+// END of function for exercise 10
+//---------------------------------------------------

@@ -23,10 +23,13 @@ void Enable_led7seg(int num); // 0 - 3
 // Exercise 3
 void update7SEG(int index);
 
-//Exercise 5
+// Exercise 5
 void updateClockBuffer(int hr_ind, int min_ind);
 
-//Exercise 9
+// Exercise 9
 void updateLEDMatrix(int index);
+
+// Exercise 10
+void shift_left();
 
 #endif /* SRC_LAB2_LIB_LAB2_EX_H_ */
