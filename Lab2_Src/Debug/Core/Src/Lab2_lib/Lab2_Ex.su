@@ -1,5 +1,0 @@
-Lab2_Ex.c:10:6:Lab2_Init	56	static
-Lab2_Ex.c:33:6:display7SEG	16	static
-Lab2_Ex.c:39:6:Enable_led7seg	16	static
-Lab2_Ex.c:72:6:update7SEG	16	static
-Lab2_Ex.c:99:6:updateClockBuffer	16	static

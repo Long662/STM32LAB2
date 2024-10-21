@@ -123,14 +123,23 @@ void updateClockBuffer(int hr_ind, int min_ind){
 
 //---------------------------------------------------
 // BEGIN function for exercise 9
+uint16_t COLUMS_PINS[8] = {ENM0_Pin, ENM1_Pin, ENM2_Pin, ENM3_Pin, ENM4_Pin, ENM5_Pin, ENM6_Pin, ENM7_Pin};
+uint16_t ROWS_PINS[8] = {ROW0_Pin, ROW1_Pin, ROW2_Pin, ROW3_Pin, ROW4_Pin, ROW5_Pin, ROW6_Pin, ROW7_Pin};
+
 const int MAX_LED_MATRIX = 8;
 int index_led_matrix = 0;
-uint8_t matrix_buffer[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x7E, 0x66, 0x66};//quét theo cột
+uint8_t matrix_buffer[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x7E, 0x66, 0x66};//quét theo hàng
+
 void updateLEDMatrix(int index){
 	switch (index){
-	case 0:	HAL_GPIO_WritePin(GPIOB, ENM0_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOB, ROW0, GPIO_PIN_RESET);
-
+	case 0:	HAL_GPIO_WritePin(GPIOB, ROWS_PINS, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOB, ROW0_Pin, GPIO_PIN_RESET);
+			for (int col = 0; col < 8; col++){
+				if (matrix_buffer[index] & (1 << col)) {
+					HAL_GPIO_WritePin(GPIOA, COLUMS_PINS, GPIO_PIN_RESET);
+				}
+				else
+			}
 			break;
 	case 1:
 			break;
